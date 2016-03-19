@@ -20,7 +20,7 @@ You should feed your snake with fruit to get points.
 Finish the game with the highest score.
 
 Game World:
-The map is a rectangle limited by walls.  
+The map is a rectangle limited by walls.
 The map is made of cases where fruit can pop and the snake can move. 
 
 Game Rules:

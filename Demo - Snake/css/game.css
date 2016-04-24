@@ -1,0 +1,40 @@
+.game {
+	display: flex;
+}
+
+textarea {
+	font-family: "courier";
+	line-height: normal;
+}
+
+
+.row {
+    margin: 0 !important;
+}
+input {
+    line-height: 30px;
+}
+
+
+/* grid */
+.wrapper {
+    width: auto;
+    margin: 0;
+    line-height: 20px;
+}
+.gameboard {
+    height: auto;
+}
+.gameboard div {
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+
+.middle {
+    width: 20px;
+}
+.middle img{
+    width: 20px;
+    vertical-align: bottom;
+}

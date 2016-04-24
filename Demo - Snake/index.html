@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<title>
+		Game engine
+	</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/game.css">
+	<script src="libs/angular.min.js"></script>
+  	<script src="app/basicscripts.js"></script>
+	<script src="app/app.js"></script>
+
+</head>
+<body ng-app="Guess" ng-controller="basicController" class="row">
+	<div class="jumbotron row col-md-6">
+		<span> {{ message }} </span>
+
+		<article ng-show="spriteMap.length">
+			<div class="wrapper">
+				<div class="gameboard" ng-repeat="x in spriteMap track by $index" ng-style="style(map.width)">
+					<div class="middle" ng-click="mapEdit($index)">
+						<img ng-show="!x" src="resources/white.png">
+						<div ng-show="x == 1" style="background:black"></div>
+						<div ng-show="x == 2"><img src="./resources/head.png"></div>
+						<div ng-show="x == 3"><img src="./resources/body.png"></div>
+						<div ng-show="x == 4"><img src="./resources/fruit.png"></div>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<p>Step number {{step}}</p>
+			<div class="btn btn-default" ng-click="prevStep()"><-- Previous Step</div>
+			<div class="btn btn-default" ng-click="nextStep()">Next Step --></div>
+		</article>
+	</div>
+
+	<div class="jumbotron row col-md-6">
+		<form>
+			<h4>Reset and Change size</h4>
+			<input type="number" ng-model="map.width" placeholder="Width"></input>
+			<input type="number" ng-model="map.height" placeholder="Height"></input>
+			<div class="btn btn-default" ng-click="reset()">Reset map</div>
+		</form>
+	</div>
+
+	<div class="jumbotron row col-md-6" ng-show="types.length">
+		<p>Game Objects : Here we go !</p>
+		<form class="row">
+			<h4>Link </h4>
+			<input class="col-sm-6" type="text" ng-model="input.name" placeholder="Object Name"></input>
+			<div class="btn btn-default col-sm-6" ng-click="createType(input.name, step)">Associate with step {{step}}</div>
+		</form>
+		<div class="row" ng-show="types.length" ng-repeat="obj in types">
+			<div class="col-sm-6">{{obj.name}}</div>
+			<div class="col-sm-6">{{obj.num}}</div>
+		</div>
+		<div class="col-sm-4 btn btn-default" ng-click="deleteType()">Delete last Object</div>
+	</div>
+
+<!--
+ 	<div class="jumbotron row col-md-6" ng-show="types.length">
+		<form>
+			<h4>Add a keyboard event listener</h4>
+			<input type="number" ng-model="input.code" placeholder="KeyCode"></input>
+			<input type="number" ng-model="input.num" placeholder="Script number"></input>
+			<div class="btn btn-default" ng-click="assign(input.code, input.num)">Associate</div>
+		</form>
+	</div>
+ -->
+
+	<div class="jumbotron row col-md-6">
+		<div class="btn btn-default" ng-click="generate()">Generate</div>
+<!-- 		<div class="btn btn-default" ng-click="stop()">Stop the GameLoop</div>
+ -->	</div>
+</body>
+</html>
